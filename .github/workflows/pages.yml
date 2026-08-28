@@ -1,0 +1,52 @@
+# Publica o app no GitHub Pages.
+#
+# Roda SÓ quando acionado à mão (Actions -> Deploy no GitHub Pages -> Run
+# workflow). É de propósito: assim um push nunca publica nada sem querer.
+#
+# O build sai em modo OFFLINE (sem as variáveis VITE_SUPABASE_*), que é o certo
+# para uma URL pública — o family_id ficaria visível no bundle para quem
+# abrisse o site. Para uso pessoal com sincronização, builde na sua máquina.
+#
+# Antes do primeiro uso: Settings -> Pages -> Source = GitHub Actions.
+name: Deploy no GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
+        env:
+          # Faz os assets apontarem para /nome-do-repo/ em vez da raiz
+          BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

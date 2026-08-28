@@ -1,0 +1,11 @@
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body,#root{width:100%;max-width:100vw;overflow-x:hidden;overscroll-behavior-y:none}
+body{background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+input,button{font-family:inherit;outline:none;max-width:100%}
+input{color-scheme:light}
+::-webkit-scrollbar{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.fade-up{animation:fadeUp .3s ease both}
+.slide-up{animation:slideUp .28s cubic-bezier(.32,.72,0,1) both}

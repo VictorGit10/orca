@@ -1,0 +1,17 @@
+# Configuração do deploy no Netlify.
+#
+# As três variáveis VITE_* precisam estar cadastradas em
+# Site configuration → Environment variables. Elas são lidas no momento do
+# build — o .env.local da sua máquina não sobe para o Netlify.
+# Sem elas o app publica normalmente, só que em modo offline (sem sincronizar).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA: o app não tem router, mas isto evita 404 se a pessoa recarregar
+# numa URL com caminho.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
