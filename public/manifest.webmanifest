@@ -1,7 +1,10 @@
 {
+  "id": "/orca/?app=orca-2026",
   "name": "Orça",
   "short_name": "Orça",
-  "start_url": ".",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#f8fafc",
