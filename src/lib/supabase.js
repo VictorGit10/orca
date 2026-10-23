@@ -15,9 +15,9 @@ const noopClient = {
   removeChannel: () => {},
 };
 
-// O login fica salvo no aparelho (sessão renovada sozinha). No GitHub Pages o
-// Orça divide o endereço com o Tarefas (apps-victor.github.io): quem entrou num
-// já está dentro do outro, porque a chave de armazenamento padrão é a mesma.
+// O login fica salvo no aparelho (sessão renovada sozinha). O Orça tem endereço
+// próprio (orca-victor.github.io): no Android o Chrome só instalou um app por
+// endereço, e o Tarefas já ocupa apps-victor.github.io.
 export const supabase = supabaseReady
   ? createClient(supabaseUrl, supabaseKey, {
       auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce' },

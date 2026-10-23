@@ -7,8 +7,8 @@ import { QUEUE_KEY } from './store/reducer.js';
 // Portão do app: só mostra o Orça para quem entrou com e-mail + código e tem
 // acesso à família. Endereços antigos (Netlify) enviam o que falta e mandam
 // para o endereço novo.
-const NOVO_ENDERECO = 'https://apps-victor.github.io/orca/';
-const HOSTS_ATUAIS = ['apps-victor.github.io', 'localhost', '127.0.0.1'];
+const NOVO_ENDERECO = 'https://orca-victor.github.io/';
+const HOSTS_ATUAIS = ['orca-victor.github.io', 'localhost', '127.0.0.1'];
 const CHAVE_EMAIL = 'orca.email';
 
 const caixa = { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: P.bg, padding: 24, fontFamily: 'Manrope, system-ui, sans-serif', color: P.text };
